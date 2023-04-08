@@ -50,4 +50,10 @@ for (let i = 0; i < 10; i++) {
     };
 };
 
-//const clear = document.getElementById("")
+const clear = document.getElementById("clear");
+clear.addEventListener("click", allClear);
+
+function allClear () {
+    displayNum = ""
+    addToDisplay(displayNum);
+};
