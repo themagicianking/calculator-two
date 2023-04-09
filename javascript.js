@@ -63,6 +63,20 @@ let operations = document.querySelectorAll("button.operations");
 for (let i = 0; i < 4; i++) {
     operations[i].addEventListener("click", getSum);
     function getSum () {
+        if (numOne == "none") {
+            numOne = parseInt(displayNum);
+            displayNum = "";
+        }
+        else {
+            console.log(operator);
+            numTwo = parseInt(displayNum);
+            displayNum = operate(numOne, numTwo, operator);
+            addToDisplay(displayNum);
+            numOne = displayNum;
+            numTwo = "none";
+            displayNum = "";
+            operator = "none";
+        };
         if (operations[i].textContent == "+") {
             operator = "add";
         }
@@ -74,18 +88,6 @@ for (let i = 0; i < 4; i++) {
         }
         else {
             operator = "divide";
-        };
-        if (numOne == "none") {
-            numOne = parseInt(displayNum);
-            displayNum = "";
-        }
-        else {
-            numTwo = parseInt(displayNum);
-            displayNum = operate(numOne, numTwo, operator);
-            addToDisplay(displayNum);
-            numOne = displayNum;
-            numTwo = "none";
-            displayNum = "";
         };
     };
 };
