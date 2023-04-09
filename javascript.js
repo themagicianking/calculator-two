@@ -14,9 +14,9 @@ function divide (x, y) {
     return x / y;
 };
 
-let numOne;
-let numTwo;
-let operator;
+let numOne = "none";
+let numTwo = "none";
+let operator = "none";
 
 function operate(numOne, numTwo, operator) {
     if (operator == "add") {
@@ -47,6 +47,7 @@ for (let i = 0; i < 10; i++) {
     function storeDisplay () {
         displayNum = displayNum + numbers[i].textContent;
         addToDisplay(displayNum);
+        console.log("working");
     };
 };
 
@@ -54,6 +55,41 @@ const clear = document.getElementById("clear");
 clear.addEventListener("click", allClear);
 
 function allClear () {
-    displayNum = ""
+    displayNum = "";
     addToDisplay(displayNum);
 };
+
+let operations = document.querySelectorAll("button.operations");
+
+for (let i = 0; i < 4; i++) {
+    operations[i].addEventListener("click", getSum);
+    function getSum () {
+        if (operations[i].textContent == "+") {
+            operator = "add";
+            displayNum = "";
+        }
+        else if (operations[i].textContent == "-") {
+            operator = "subtract";
+            displayNum = "";
+        }
+        else if (operations[i].textContent == "x") {
+            operator = "multiply";
+            displayNum = "";
+        }
+        else {
+            operator = "divide";
+            displayNum = "";
+        };
+        if (numOne == "none") {
+            numOne = parseInt(displayNum);
+        }
+        else if (numTwo == "none") {
+            numTwo = parseInt(displayNum);
+        }
+        else {
+            displayNum = operate(numOne, numTwo, operator);
+            addToDisplay(displayNum);
+        };
+        operator = "none";
+    }
+}
