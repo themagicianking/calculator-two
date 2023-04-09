@@ -47,7 +47,6 @@ for (let i = 0; i < 10; i++) {
     function storeDisplay () {
         displayNum = displayNum + numbers[i].textContent;
         addToDisplay(displayNum);
-        console.log("working");
     };
 };
 
@@ -66,30 +65,27 @@ for (let i = 0; i < 4; i++) {
     function getSum () {
         if (operations[i].textContent == "+") {
             operator = "add";
-            displayNum = "";
         }
         else if (operations[i].textContent == "-") {
             operator = "subtract";
-            displayNum = "";
         }
         else if (operations[i].textContent == "x") {
             operator = "multiply";
-            displayNum = "";
         }
         else {
             operator = "divide";
-            displayNum = "";
         };
         if (numOne == "none") {
             numOne = parseInt(displayNum);
-        }
-        else if (numTwo == "none") {
-            numTwo = parseInt(displayNum);
+            displayNum = "";
         }
         else {
+            numTwo = parseInt(displayNum);
             displayNum = operate(numOne, numTwo, operator);
             addToDisplay(displayNum);
+            numOne = displayNum;
+            numTwo = "none";
+            displayNum = "";
         };
-        operator = "none";
-    }
-}
+    };
+};
