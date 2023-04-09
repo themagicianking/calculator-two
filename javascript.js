@@ -34,9 +34,9 @@ function operate(numOne, numTwo, operator) {
 };
 
 let displayNum = "";
+const display = document.querySelector(".display");
 
 function addToDisplay (x) {
-    const display = document.querySelector(".display");
     display.textContent = x;
 }
 
@@ -55,7 +55,22 @@ clear.addEventListener("click", allClear);
 
 function allClear () {
     displayNum = "";
+    numOne = "none";
+    numTwo = "none";
+    operator = "none";
     addToDisplay(displayNum);
+};
+
+const equals = document.getElementById("equals");
+equals.addEventListener("click", evaluate);
+
+function evaluate () {
+    numTwo = parseInt(displayNum);
+    displayNum = operate(numOne, numTwo, operator);
+    addToDisplay(displayNum);
+    numOne = "none";
+    numTwo = "none";
+    displayNum = "";
 };
 
 let operations = document.querySelectorAll("button.operations");
@@ -64,15 +79,15 @@ for (let i = 0; i < 4; i++) {
     operations[i].addEventListener("click", getSum);
     function getSum () {
         if (numOne == "none") {
-            numOne = parseInt(displayNum);
+            numOne = parseInt(display.textContent);
+            console.log(display.textContent);
             displayNum = "";
         }
-        else {
-            console.log(operator);
+        else if (numTwo == "none") {
             numTwo = parseInt(displayNum);
             displayNum = operate(numOne, numTwo, operator);
             addToDisplay(displayNum);
-            numOne = displayNum;
+            numOne = parseInt(displayNum);
             numTwo = "none";
             displayNum = "";
             operator = "none";
