@@ -11,8 +11,13 @@ function multiply (x, y) {
 };
 
 function divide (x, y) {
-    return x / y;
-};
+    if ((x / y ) == Infinity || (x / y) == -Infinity) {
+        return "Nice try."
+    }
+    else {
+        return x / y;
+    };
+}
 
 let numOne = "none";
 let numTwo = "none";
