@@ -17,7 +17,7 @@ function divide (x, y) {
     else {
         return x / y;
     };
-}
+};
 
 let numOne = "none";
 let numTwo = "none";
@@ -70,12 +70,14 @@ const equals = document.getElementById("equals");
 equals.addEventListener("click", evaluate);
 
 function evaluate () {
+    if (numOne != "none") {
     numTwo = parseInt(displayNum);
     displayNum = operate(numOne, numTwo, operator);
     addToDisplay(displayNum);
     numOne = "none";
     numTwo = "none";
     displayNum = "";
+    };
 };
 
 let operations = document.querySelectorAll("button.operations");
