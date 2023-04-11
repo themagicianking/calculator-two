@@ -1,13 +1,23 @@
 function add (x, y) {
-    return x + y;
+    if ((x + y) > 9999999999) {
+        return "Error: overflow";
+    }
+    else {
+        return Math.round((x + y) * 10) / 10;
+    }
 };
 
 function subtract (x, y) {
-    return x - y;
+    return Math.round((x - y) * 10) / 10;
 };
 
 function multiply (x, y) {
-    return x * y;
+    if ((x * y) > 9999999999) {
+        return "Error: overflow";
+    }
+    else {
+        return Math.round((x * y) * 10) / 10;
+    };
 };
 
 function divide (x, y) {
@@ -15,7 +25,7 @@ function divide (x, y) {
         return "Nice try."
     }
     else {
-        return x / y;
+        return Math.round((x / y) * 10) / 10;
     };
 };
 
@@ -50,8 +60,10 @@ let numbers = document.querySelectorAll("button.number");
 for (let i = 0; i < 10; i++) {
     numbers[i].addEventListener("click", storeDisplay);
     function storeDisplay () {
-        displayNum = displayNum + numbers[i].textContent;
-        addToDisplay(displayNum);
+        if ((numbers[i].textContent + displayNum).length < 10) {
+            displayNum = displayNum + numbers[i].textContent;
+            addToDisplay(displayNum);
+        };
     };
 };
 
